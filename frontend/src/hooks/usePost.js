@@ -1,13 +1,18 @@
 import {useState} from "react";
 import PropTypes from "prop-types";
-import {getReadOnlyContract} from "../utils/ethereum.js";
+import { getJsonRpcContract, getBrowserContract } from "../utils/ethereum.js";
 
 function usePost() {
 
     const [loading, setLoading] = useState(false);
 
-    const createPost = async (content, images) => {
-
+    const createPost = async (content, image) => {
+        try {
+            const contract = await getBrowserContract();
+            return await contract.createPost(content, image);
+        } catch (e) {
+            console.log(e);
+        }
     };
 
     const upVote = async (postId) => {
@@ -22,7 +27,7 @@ function usePost() {
         if (loading) return;
         try {
             setLoading(true);
-            const contract = await getReadOnlyContract();
+            const contract = await getJsonRpcContract();
             return await contract.getAllPosts();
         } catch (e) {
             console.log(e);
@@ -38,7 +43,7 @@ function usePost() {
 
     createPost.propTypes = {
         content: PropTypes.string,
-        images: PropTypes.array
+        image: PropTypes.object
     };
 
     upVote.propTypes = {
