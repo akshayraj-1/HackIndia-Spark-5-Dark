@@ -21,7 +21,7 @@ const getBrowserProvider = () => {
     return new ethers.BrowserProvider(window.ethereum);
 };
 
-const getReadOnlyContract = async () => {
+const getJsonRpcContract = async () => {
     if (!CONTRACT_ADDRESS || !SocialMediaJson.abi) {
         console.error("Contract address or ABI is missing");
         return null;
@@ -36,7 +36,8 @@ const getBrowserContract = async () => {
         return null;
     }
     const provider = getBrowserProvider();
-    return new ethers.Contract(CONTRACT_ADDRESS, SocialMediaJson.abi, provider);
+    const signer = await provider.getSigner();
+    return new ethers.Contract(CONTRACT_ADDRESS, SocialMediaJson.abi, signer);
 };
 
-export { getReadOnlyContract, getBrowserContract };
+export { getJsonRpcContract, getBrowserContract };
