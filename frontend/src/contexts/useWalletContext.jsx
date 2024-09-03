@@ -40,7 +40,7 @@ export const WalletProvider = ({ children }) => {
             }
         } catch (e) {
             setError(e.message);
-            console.log(e);
+            console.error(e);
         }
     }, []);
 
