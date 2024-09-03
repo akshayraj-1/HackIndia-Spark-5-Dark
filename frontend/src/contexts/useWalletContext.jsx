@@ -1,7 +1,7 @@
 import {createContext, useCallback, useContext, useEffect, useState} from "react";
 import { ethers } from "ethers";
 
-// WalletContext
+// UseWalletContext
 export const WalletContext = createContext({
     account: null,
     provider: null,
@@ -19,12 +19,15 @@ export const WalletProvider = ({ children }) => {
 
     // Connect to the wallet
     const connectWallet = useCallback(async () => {
-        console.log("Hello");
         try {
             if (window.ethereum) {
                 const ethProvider = new ethers.BrowserProvider(window.ethereum);
+                // Request access to the user's wallet
+                await window.ethereum.request({method: "eth_requestAccounts"});
+
                 setProvider(ethProvider);
                 const accounts = await ethProvider.listAccounts();
+
                 if (accounts.length > 0) {
                     setAccount(accounts[0]);
                 } else {
@@ -32,8 +35,8 @@ export const WalletProvider = ({ children }) => {
                     console.log("No accounts found.");
                 }
             } else {
-                setError("Ethereum wallet not found.");
-                console.log("Ethereum wallet not found.");
+                setError("Metamask is not installed.");
+                console.log("Metamask is not installed.");
             }
         } catch (e) {
             setError(e.message);
@@ -75,4 +78,7 @@ export const WalletProvider = ({ children }) => {
     );
 };
 
-export const useWalletContext = () => useContext(WalletContext);
+// eslint-disable-next-line react-refresh/only-export-components
+export function useWalletContext() {
+    return useContext(WalletContext);
+}
