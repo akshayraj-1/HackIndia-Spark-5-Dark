@@ -13,8 +13,8 @@ function Button({type = "button", variant = "primary", size = "md", label, onCli
             size === "lg" && "text-[1rem] px-5 py-3"
         ),
         primary: cn("text-primary font-medium bg-accent rounded-md"),
-        secondary: "text-primaryText font-medium border-2 border-tertiary hover:bg-accent hover:text-primary bg-secondary/70 rounded-md",
-        tertiary: "text-primaryText font-medium bg-transparent rounded-md border border-tertiary hover:bg-tertiary/70 transition"
+        secondary: "text-primaryText font-medium border-2 border-tertiary hover:bg-accent hover:text-primary bg-secondary/80 rounded-md",
+        tertiary: "text-primaryText font-medium bg-transparent rounded-md border border-tertiary hover:bg-tertiary/80 transition"
     }
 
     return (
