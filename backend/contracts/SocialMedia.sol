@@ -43,7 +43,11 @@ contract SocialMedia {
     }
 
     function getAllPosts() public view returns (Post[] memory) {
-        return posts;
+        Post[] memory latestPosts = new Post[](postCount);
+        for (uint256 i = 0; i < postCount; i++) {
+            latestPosts[i] = posts[postCount - 1 - i];
+        }
+        return latestPosts;
     }
 
     function upvote(uint256 _postId) public {
