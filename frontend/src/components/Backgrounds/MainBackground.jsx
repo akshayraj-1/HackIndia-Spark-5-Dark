@@ -5,8 +5,8 @@ function MainBackground({ children, className }) {
     return (
         <div className="relative size-full before:absolute
         before:inset-0 before:bg-main before:bg-cover
-        before:bg-no-repeat before:bg-center before:opacity-50">
-            <div className={cn("absolute z-[2] size-full", className)}>
+        before:bg-no-repeat before:bg-center">
+            <div className={cn("absolute z-[3] size-full backdrop-blur", className)}>
                 {children}
             </div>
         </div>
