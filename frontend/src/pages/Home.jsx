@@ -28,7 +28,7 @@ function Home() {
     return (
         <main className="relative flex justify-center items-start gap-4 md:gap-6 size-full py-4 px-5 sm:px-8">
 
-            <div className="sticky top-20 bg-secondary/70 rounded-md border-2 border-tertiary px-4 py-2">
+            <div className="sticky top-20 bg-secondary/80 rounded-md border-2 border-tertiary px-4 py-2">
                 <Button label="Create Post" variant="primary" onClick={handleCreatePost}/>
             </div>
 
