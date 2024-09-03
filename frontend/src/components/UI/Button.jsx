@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import {motion} from "framer-motion";
 import cn from "../../utils/cn.util.js";
 
-function Button({type = "button", variant = "primary", size = "sm", label, onClick, href, className}) {
+function Button({type = "button", variant = "primary", size = "md", label, onClick, href, className}) {
 
     const Element = type === "button" ? motion.button : motion.a;
 
@@ -13,8 +13,8 @@ function Button({type = "button", variant = "primary", size = "sm", label, onCli
             size === "lg" && "text-[1rem] px-5 py-3"
         ),
         primary: cn("text-primary font-medium bg-accent rounded-md"),
-        secondary: "text-primaryText font-medium border border-tertiary hover:bg-accent hover:text-primary bg-secondary/50 rounded-md",
-        tertiary: "text-primaryText font-medium bg-transparent rounded-md border border-tertiary hover:bg-tertiary/50 transition"
+        secondary: "text-primaryText font-medium border-2 border-tertiary hover:bg-accent hover:text-primary bg-secondary/70 rounded-md",
+        tertiary: "text-primaryText font-medium bg-transparent rounded-md border border-tertiary hover:bg-tertiary/70 transition"
     }
 
     return (
