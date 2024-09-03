@@ -13,6 +13,7 @@ function usePost() {
 
 
     const createPost = async (content, image) => {
+        if (!content || !image) return;
         try {
             const contract = await getBrowserContract();
             let imageUri = "";
