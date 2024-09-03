@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import cn from "../../utils/cn.util.js";
 import {useRef} from "react";
 
-function Post({ id, owner, timestamp, content, image, upVotes, downVotes, onClick, styles }) {
+function PostCard({ id, owner, timestamp, content, image, upVotes, downVotes, onClick, styles }) {
 
     const cardRef = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -36,7 +36,7 @@ function Post({ id, owner, timestamp, content, image, upVotes, downVotes, onClic
     );
 }
 
-Post.propTypes = {
+PostCard.propTypes = {
     id: PropTypes.string.isRequired,
     owner: PropTypes.string.isRequired,
     timestamp: PropTypes.number.isRequired,
@@ -47,4 +47,4 @@ Post.propTypes = {
     onClick: PropTypes.func
 }
 
-export default Post;
+export default PostCard;
